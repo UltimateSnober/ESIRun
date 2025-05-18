@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="transport.control.ListUsagerController"
+            prefWidth="800" prefHeight="600"
+            stylesheets="@styles.css">
+
+    <top>
+        <VBox alignment="CENTER" spacing="10">
+            <padding>
+                <Insets top="20" right="20" bottom="10" left="20"/>
+            </padding>
+            
+            <Label text="Liste des Usagers" styleClass="title-label"/>
+        </VBox>
+    </top>
+    
+    <center>
+        <VBox spacing="15" styleClass="form-container">
+            <padding>
+                <Insets top="15" right="20" bottom="15" left="20"/>
+            </padding>
+            
+            <!-- Search and filter options -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Filtre:" styleClass="form-label"/>
+                <ComboBox fx:id="filtreTypeComboBox" prefWidth="150" styleClass="form-field"/>
+                
+                <Region HBox.hgrow="ALWAYS" />
+                
+                <Button text="Actualiser" onAction="#filtrerListe" 
+                        styleClass="menu-button, menu-button-blue" prefHeight="30" prefWidth="100">
+                </Button>
+            </HBox>
+            
+            <!-- User table -->
+            <TableView fx:id="tableView" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="idColumn" text="ID" prefWidth="50" />
+                    <TableColumn fx:id="nomColumn" text="Nom" prefWidth="120" />
+                    <TableColumn fx:id="prenomColumn" text="Prénom" prefWidth="120" />
+                    <TableColumn fx:id="dateNaissanceColumn" text="Date de naissance" prefWidth="120" />
+                    <TableColumn fx:id="handicapeColumn" text="Handicapé" prefWidth="80" />
+                    <TableColumn fx:id="typeColumn" text="Type" prefWidth="80" />
+                    <TableColumn fx:id="matriculeColumn" text="Matricule" prefWidth="100" />
+                    <TableColumn fx:id="fonctionColumn" text="Fonction" prefWidth="100" />
+                </columns>
+                <placeholder>
+                    <Label text="Aucun usager trouvé" />
+                </placeholder>
+            </TableView>
+            
+            <!-- Status message -->
+            <HBox alignment="CENTER_LEFT">
+                <Label fx:id="totalLabel" text="Total: 0 personnes" />
+            </HBox>
+            
+            <!-- User details section (can be added later if needed) -->
+        </VBox>
+    </center>
+    
+    <bottom>
+        <HBox alignment="CENTER" spacing="20" styleClass="footer">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            
+            <Button text="Retour à l'accueil" onAction="#retourAccueil" 
+                    styleClass="menu-button" prefWidth="140" prefHeight="40">
+            </Button>
+                    
+            <!-- Add these buttons when you implement these features -->
+            <!--
+            <Button text="Modifier sélectionné" onAction="#modifierUsager" fx:id="modifierButton"
+                    styleClass="menu-button, menu-button-orange" prefWidth="150" prefHeight="40" disable="true" />
+                    
+            <Button text="Supprimer sélectionné" onAction="#supprimerUsager" fx:id="supprimerButton"
+                    styleClass="menu-button, menu-button-red" prefWidth="150" prefHeight="40" disable="true" />
+            -->
+        </HBox>
+    </bottom>
+</BorderPane>

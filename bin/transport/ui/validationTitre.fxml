@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="transport.control.ValidationTitreController"
+            prefWidth="550" prefHeight="500"
+            stylesheets="@styles.css">
+
+    <top>
+        <VBox alignment="CENTER" spacing="10">
+            <padding>
+                <Insets top="20" right="20" bottom="10" left="20"/>
+            </padding>
+            
+            <Label text="Validation de Titre de Transport" styleClass="title-label"/>
+            <Label text="Vérifiez la validité d'un titre de transport" styleClass="subtitle-label"/>
+        </VBox>
+    </top>
+    
+    <center>
+        <VBox spacing="20" styleClass="form-container">
+            <padding>
+                <Insets top="20" right="30" bottom="20" left="30"/>
+            </padding>
+            
+            <!-- ID Entry Section -->
+            <TitledPane text="Identification du Titre" expanded="true" styleClass="section-pane">
+                <GridPane hgap="15" vgap="15">
+                    <padding>
+                        <Insets top="15" right="15" bottom="15" left="15"/>
+                    </padding>
+                    
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="NEVER" minWidth="120"/>
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="200"/>
+                        <ColumnConstraints hgrow="NEVER" minWidth="100"/>
+                    </columnConstraints>
+                    
+                    <Label text="ID du titre:" GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="form-label"/>
+                    <TextField fx:id="idField" GridPane.columnIndex="1" GridPane.rowIndex="0" 
+                               promptText="Entrez l'ID du titre" styleClass="form-field"/>
+                    <Button text="Valider" onAction="#validerTitre" GridPane.columnIndex="2" GridPane.rowIndex="0"
+                            styleClass="menu-button, menu-button-blue" prefWidth="100"/>
+                </GridPane>
+            </TitledPane>
+            
+            <!-- Result Section -->
+            <TitledPane fx:id="resultPane" text="Résultat de la Validation" expanded="false" visible="false" managed="false" styleClass="section-pane">
+                <VBox spacing="15">
+                    <padding>
+                        <Insets top="10" right="10" bottom="10" left="10"/>
+                    </padding>
+                    
+                    <HBox alignment="CENTER" spacing="10">
+                        <Label fx:id="validationLabel" styleClass="large-text" text="Validation en cours..." />
+                    </HBox>
+                    
+                    <Separator />
+                    
+                    <GridPane hgap="15" vgap="10">
+                        <columnConstraints>
+                            <ColumnConstraints hgrow="NEVER" minWidth="150"/>
+                            <ColumnConstraints hgrow="ALWAYS" minWidth="250"/>
+                        </columnConstraints>
+                        
+                        <Label text="Type:" GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="form-label"/>
+                        <Label fx:id="typeLabel" text="-" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                        
+                        <Label text="Date d'achat:" GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="form-label"/>
+                        <Label fx:id="dateAchatLabel" text="-" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                        
+                        <Label text="Prix:" GridPane.columnIndex="0" GridPane.rowIndex="2" styleClass="form-label"/>
+                        <Label fx:id="prixLabel" text="-" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                        
+                        <Label text="Usager:" GridPane.columnIndex="0" GridPane.rowIndex="3" styleClass="form-label"/>
+                        <Label fx:id="usagerLabel" text="-" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                        
+                        <Label text="Validité:" GridPane.columnIndex="0" GridPane.rowIndex="4" styleClass="form-label"/>
+                        <Label fx:id="validiteLabel" text="-" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+                    </GridPane>
+                </VBox>
+            </TitledPane>
+            
+            <!-- Message Display -->
+            <HBox alignment="CENTER" styleClass="message-container">
+                <Label fx:id="messageLabel" wrapText="true" alignment="CENTER" textAlignment="CENTER">
+                    <padding>
+                        <Insets top="10" right="15" bottom="10" left="15"/>
+                    </padding>
+                </Label>
+            </HBox>
+        </VBox>
+    </center>
+    
+    <bottom>
+        <HBox alignment="CENTER" spacing="20" styleClass="footer">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            
+            <Button text="Retour à l'accueil" onAction="#retourAccueil" styleClass="menu-button" 
+                   prefWidth="150" prefHeight="40" />
+            
+            <Button text="Acheter un titre" onAction="#navigateToAchatTitre" styleClass="menu-button, menu-button-green"
+                   prefWidth="150" prefHeight="40" />
+        </HBox>
+    </bottom>
+</BorderPane>

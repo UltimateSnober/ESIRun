@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx" 
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="transport.control.AchatTitreController"
+            prefWidth="500" prefHeight="550"
+            stylesheets="@styles.css">
+
+    <top>
+        <VBox alignment="CENTER" spacing="10">
+            <padding>
+                <Insets top="20" right="20" bottom="10" left="20"/>
+            </padding>
+            
+            <Label text="Achat d'un Titre de Transport" styleClass="title-label"/>
+        </VBox>
+    </top>
+    
+    <center>
+        <VBox spacing="20" styleClass="form-container">
+            <padding>
+                <Insets top="20" right="30" bottom="20" left="30"/>
+            </padding>
+            
+            <!-- Type selection -->
+            <GridPane hgap="15" vgap="15" alignment="CENTER">
+                <columnConstraints>
+                    <ColumnConstraints hgrow="NEVER" minWidth="120"/>
+                    <ColumnConstraints hgrow="ALWAYS" minWidth="200"/>
+                </columnConstraints>
+                
+                <Label text="Type de titre:" GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="form-label"/>
+                <ComboBox fx:id="typeComboBox" prefWidth="250" GridPane.columnIndex="1" GridPane.rowIndex="0" styleClass="form-field"/>
+                
+                <Label text="Usager:" GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="form-label"/>
+                <ComboBox fx:id="usagerComboBox" prefWidth="250" GridPane.columnIndex="1" GridPane.rowIndex="1" styleClass="form-field"/>
+            </GridPane>
+            
+            <!-- Carte options -->
+            <VBox fx:id="carteOptionsPane" spacing="15">
+                <TitledPane text="Options de la Carte Navigation" expanded="true">
+                    <GridPane hgap="15" vgap="15" alignment="CENTER">
+                        <padding>
+                            <Insets top="10" right="10" bottom="10" left="10"/>
+                        </padding>
+                        
+                        <columnConstraints>
+                            <ColumnConstraints hgrow="NEVER" minWidth="120"/>
+                            <ColumnConstraints hgrow="ALWAYS" minWidth="200"/>
+                        </columnConstraints>
+                        
+                        <Label text="ID Carte:" GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="form-label"/>
+                        <TextField fx:id="idField" GridPane.columnIndex="1" GridPane.rowIndex="0" styleClass="form-field"/>
+                        
+                        <Label text="Type de carte:" GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="form-label"/>
+                        <ComboBox fx:id="typeCarteComboBox" prefWidth="250" GridPane.columnIndex="1" GridPane.rowIndex="1" styleClass="form-field"/>
+                    </GridPane>
+                </TitledPane>
+            </VBox>
+            
+            <!-- Price and status -->
+            <VBox alignment="CENTER" spacing="10">
+                <Label fx:id="prixLabel" text="Prix: 50.00 DA" styleClass="price-label"/>
+                <Label fx:id="messageLabel" wrapText="true" alignment="CENTER" textAlignment="CENTER"/>
+            </VBox>
+        </VBox>
+    </center>
+    
+    <bottom>
+        <HBox alignment="CENTER" spacing="20" styleClass="footer">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            
+            <Button fx:id="acheterButton" text="Acheter" onAction="#acheter" 
+                    styleClass="menu-button, menu-button-green" prefWidth="120" prefHeight="40">
+            </Button>
+
+            <Button text="Retour à l'accueil" onAction="#retourAccueil" 
+                    styleClass="menu-button" prefWidth="120" prefHeight="40">
+            </Button>
+
+            <Button fx:id="refreshButton" text="Actualiser les usagers" 
+                    styleClass="menu-button, menu-button-blue" onAction="#refreshUsagers" prefWidth="160" prefHeight="40">
+            </Button>
+        </HBox>
+    </bottom>
+</BorderPane>

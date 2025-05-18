@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="transport.control.AccueilController"
+      prefWidth="800" prefHeight="600"
+      stylesheets="@styles.css">
+
+    <top>
+        <VBox alignment="CENTER" spacing="10">
+            <padding>
+                <Insets top="20" right="20" bottom="10" left="20"/>
+            </padding>
+            
+            <Label fx:id="welcomeLabel" text="Bienvenue à ESIRun" styleClass="title-label"/>
+            <Label text="Système de gestion des transports en commun" styleClass="subtitle-label"/>
+        </VBox>
+    </top>
+    
+    <center>
+        <TabPane tabClosingPolicy="UNAVAILABLE" prefHeight="400">
+            <Tab text="Espace Usager">
+                <VBox spacing="20" alignment="CENTER">
+                    <padding>
+                        <Insets top="30" right="30" bottom="30" left="30"/>
+                    </padding>
+                    
+                    <Label text="Gestion des Usagers" styleClass="section-title"/>
+                    
+                    <HBox spacing="20" alignment="CENTER">
+                        <Button onAction="#navigateToAjoutUsager" prefWidth="240" prefHeight="160"
+                                styleClass="menu-button, menu-button-blue">
+                            <graphic>
+                                <VBox spacing="12" alignment="CENTER">
+                                    <Label text="+" styleClass="menu-icon"/>
+                                    <Label text="Créer un Usager" styleClass="menu-text"/>
+                                    <Label text="Ajouter un usager" styleClass="menu-subtext"/>
+                                </VBox>
+                            </graphic>
+                        </Button>
+                        
+                        <Button onAction="#navigateToListUsager" prefWidth="240" prefHeight="160"
+                                styleClass="menu-button, menu-button-blue">
+                            <graphic>
+                                <VBox spacing="12" alignment="CENTER">
+                                    <Label text="≡" styleClass="menu-icon"/>
+                                    <Label text="Liste des Usagers" styleClass="menu-text"/>
+                                    <Label text="Consulter la liste" styleClass="menu-subtext"/>
+                                </VBox>
+                            </graphic>
+                        </Button>
+                    </HBox>
+                </VBox>
+            </Tab>
+            
+            <Tab text="Espace Titre">
+                <VBox spacing="20" alignment="CENTER">
+                    <padding>
+                        <Insets top="30" right="30" bottom="30" left="30"/>
+                    </padding>
+                    
+                    <Label text="Gestion des Titres de Transport" styleClass="section-title"/>
+                    
+                    <HBox spacing="20" alignment="CENTER">
+                        <Button onAction="#navigateToAchatTitre" prefWidth="240" prefHeight="160"
+                                styleClass="menu-button, menu-button-green">
+                            <graphic>
+                                <VBox spacing="12" alignment="CENTER">
+                                    <Label text="€" styleClass="menu-icon"/>
+                                    <Label text="Acheter un Titre" styleClass="menu-text"/>
+                                    <Label text="Acheter un titre" styleClass="menu-subtext"/>
+                                </VBox>
+                            </graphic>
+                        </Button>
+                        
+                        <Button onAction="#navigateToValidationTitre" prefWidth="240" prefHeight="160"
+                                styleClass="menu-button, menu-button-green">
+                            <graphic>
+                                <VBox spacing="12" alignment="CENTER">
+                                    <Label text="✓" styleClass="menu-icon"/>
+                                    <Label text="Valider un Titre" styleClass="menu-text"/>
+                                    <Label text="Valider un titre" styleClass="menu-subtext"/>
+                                </VBox>
+                            </graphic>
+                        </Button>
+                        
+                        <Button onAction="#navigateToListTitres" prefWidth="240" prefHeight="160"
+                                styleClass="menu-button, menu-button-green">
+                            <graphic>
+                                <VBox spacing="12" alignment="CENTER">
+                                    <Label text="📋" styleClass="menu-icon"/>
+                                    <Label text="Liste des Titres" styleClass="menu-text"/>
+                                    <Label text="Consulter les ventes" styleClass="menu-subtext"/>
+                                </VBox>
+                            </graphic>
+                        </Button>
+                    </HBox>
+                </VBox>
+            </Tab>
+            
+            <Tab text="Espace Réclamation">
+                <VBox spacing="20" alignment="CENTER">
+                    <padding>
+                        <Insets top="30" right="30" bottom="30" left="30"/>
+                    </padding>
+                    
+                    <Label text="Gestion des Réclamations" styleClass="section-title"/>
+                    
+                    <HBox spacing="20" alignment="CENTER">
+                        <Button onAction="#navigateToReclamation" prefWidth="240" prefHeight="160"
+                                styleClass="menu-button, menu-button-red">
+                            <graphic>
+                                <VBox spacing="12" alignment="CENTER">
+                                    <Label text="!" styleClass="menu-icon"/>
+                                    <Label text="Déposer une Réclamation" styleClass="menu-text"/>
+                                    <Label text="Nouvelle réclamation" styleClass="menu-subtext"/>
+                                </VBox>
+                            </graphic>
+                        </Button>
+                        
+                        <Button onAction="#navigateToStatistiques" prefWidth="240" prefHeight="160"
+                                styleClass="menu-button, menu-button-red">
+                            <graphic>
+                                <VBox spacing="12" alignment="CENTER">
+                                    <Label text="📊" styleClass="menu-icon"/>
+                                    <Label text="Statistiques" styleClass="menu-text"/>
+                                    <Label text="Voir les statistiques" styleClass="menu-subtext"/>
+                                </VBox>
+                            </graphic>
+                        </Button>
+                    </HBox>
+                </VBox>
+            </Tab>
+        </TabPane>
+    </center>
+    
+    <bottom>
+        <HBox alignment="CENTER" styleClass="footer">
+            <Label text="ESIRun © 2025 - Système de Gestion des Transports" styleClass="footer-text"/>
+        </HBox>
+    </bottom>
+</BorderPane>
