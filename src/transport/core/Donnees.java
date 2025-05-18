@@ -122,4 +122,36 @@ public class Donnees {
 
         return p.getId() + " - " + p.getPrenom() + " " + p.getNom();
     }
+
+    /**
+     * Importe un usager dans le système sans modifier son ID Utilisé lors du
+     * chargement depuis des données sauvegardées
+     */
+    public static void importUsager(Personne usager) {
+        usagers.add(usager);
+        usagerParId.put(usager.getId(), usager);
+    }
+
+    /**
+     * Importe un titre dans le système sans modifier son ID Utilisé lors du
+     * chargement depuis des données sauvegardées
+     */
+    public static void importTitre(TitreTransport titre) {
+        titres.add(titre);
+    }
+
+    /**
+     * Réinitialise uniquement les données des usagers
+     */
+    public static void resetUsagers() {
+        usagers.clear();
+        usagerParId.clear();
+    }
+
+    /**
+     * Réinitialise uniquement les données des titres
+     */
+    public static void resetTitres() {
+        titres.clear();
+    }
 }

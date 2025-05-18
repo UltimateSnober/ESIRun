@@ -4,6 +4,8 @@ import java.time.LocalDate;
 
 public class Employe extends Personne {
 
+    private static final long serialVersionUID = 1L;
+
     private String matricule;
     private TypeFonction fonction;
 

@@ -4,6 +4,9 @@ import java.time.LocalDateTime;
 
 public class CarteNavigation extends TitreTransport {
 
+    private static final long serialVersionUID = 1L;
+    private static int idCounter = 10000; // Commencer à 10000 pour différencier des tickets
+
     private TypeCarte typeCarte;
     private Personne personne;
 
@@ -24,6 +27,13 @@ public class CarteNavigation extends TitreTransport {
             default ->
                 super.setPrix(5000);
         }
+    }
+
+    /**
+     * Constructeur qui utilise un ID auto-généré
+     */
+    public CarteNavigation(TypeCarte typeCarte, Personne personne) {
+        this(idCounter++, typeCarte, personne);
     }
 
     public TypeCarte getTypeCarte() {
@@ -48,4 +58,21 @@ public class CarteNavigation extends TitreTransport {
         return date.isBefore(expirationTime);
     }
 
+    /**
+     * Définit le compteur d'ID pour la génération des prochaines cartes
+     *
+     * @param value La nouvelle valeur du compteur
+     */
+    public static void setIdCounter(int value) {
+        idCounter = value;
+    }
+
+    /**
+     * Obtient la valeur actuelle du compteur d'ID
+     *
+     * @return La valeur actuelle du compteur
+     */
+    public static int getIdCounter() {
+        return idCounter;
+    }
 }
