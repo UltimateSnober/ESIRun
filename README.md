@@ -1,18 +1,28 @@
-## Getting Started
+# ESIRun - Système de Gestion de Transport
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+ESIRun est une application Java de gestion de titres de transport et d'usagers pour un réseau de transport urbain. Elle permet de gérer les usagers (employés et clients), d'acheter et de valider des titres de transport (tickets et cartes de navigation), et de consulter les listes des usagers et des titres.
 
-## Folder Structure
+## Fonctionnalités principales
 
-The workspace contains two folders by default, where:
+- **Gestion des usagers** : Ajout, affichage et filtrage des usagers (employés et clients).
+- **Achat de titres** : Achat de tickets ou de cartes de navigation avec gestion des types de cartes et des réductions.
+- **Validation de titres** : Vérification de la validité d'un titre de transport par son identifiant.
+- **Persistance des données** : Sauvegarde et chargement automatiques des données des usagers et des titres.
+- **Interface graphique** : Application JavaFX conviviale avec navigation entre les différentes fonctionnalités.
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+## Structure du projet
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+- `transport.core` : Logique métier (usagers, titres, gestion des fichiers, etc.)
+- `transport.control` : Contrôleurs JavaFX pour l'interface utilisateur
+- `transport.ui` : Fichiers FXML et ressources graphiques
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+## Lancement
 
-## Dependency Management
+Lancer la classe `Main` pour démarrer l'application. Les données sont automatiquement chargées et sauvegardées à chaque démarrage/fermeture.
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+```
+javac Main.java
+java Main
+```
+
+---
