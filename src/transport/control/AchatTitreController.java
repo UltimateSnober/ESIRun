@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.List;
 import javafx.collections.ObservableList;
 
@@ -177,6 +178,37 @@ public class AchatTitreController {
         }
 
         if ("Carte Navigation".equals(typeComboBox.getValue())) {
+            // Récupérer la personne sélectionnée
+            Personne personne = usagerComboBox.getValue().getPersonne();
+            TypeCarte typeCarte = typeCarteComboBox.getValue();
+
+            // Calculer l'âge de la personne
+            int age = calculateAge(personne.getDateNaissance());
+
+            // Vérifier si un usager essaie d'obtenir une carte partenaire
+            if (personne instanceof Usager && typeCarte == TypeCarte.PARTENAIRE) {
+                showErrorMessage("Les usagers ne peuvent pas obtenir une carte de type PARTENAIRE.");
+                return false;
+            }
+
+            // Vérifier si une personne non-handicapée essaie d'obtenir une carte solidarité
+            if (!personne.isHandicape() && typeCarte == TypeCarte.SOLIDARITE) {
+                showErrorMessage("Seules les personnes handicapées peuvent obtenir une carte de type SOLIDARITÉ.");
+                return false;
+            }
+
+            // Vérifier les restrictions d'âge pour JUNIOR
+            if (age > 25 && typeCarte == TypeCarte.JUNIOR) {
+                showErrorMessage("La carte JUNIOR est réservée aux personnes de 25 ans ou moins.");
+                return false;
+            }
+
+            // Vérifier les restrictions d'âge pour SENIOR
+            if (age < 65 && typeCarte == TypeCarte.SENIOR) {
+                showErrorMessage("La carte SENIOR est réservée aux personnes de 65 ans ou plus.");
+                return false;
+            }
+
             // Validate ID
             try {
                 int id = Integer.parseInt(idField.getText());
@@ -351,6 +383,16 @@ public class AchatTitreController {
     private void clearMessage() {
         messageLabel.setText("");
         messageLabel.getStyleClass().clear();
+    }
+
+    /**
+     * Calcule l'âge d'une personne à partir de sa date de naissance
+     *
+     * @param dateNaissance La date de naissance
+     * @return L'âge en années
+     */
+    private int calculateAge(LocalDate dateNaissance) {
+        return java.time.Period.between(dateNaissance, LocalDate.now()).getYears();
     }
 
     // Helper class for the combo box items

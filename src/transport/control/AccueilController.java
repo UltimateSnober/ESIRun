@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import javafx.scene.Node;
@@ -35,9 +36,48 @@ public class AccueilController {
         navigateToPage("validationTitre.fxml", "Validation de Titres", event);
     }
 
+    /**
+     * Navigates to the reclamation screen.
+     *
+     * @param event The action event that triggered this navigation
+     */
+    @FXML
+    private void navigateToReclamation(ActionEvent event) {
+        try {
+            throw new UnsupportedOperationException("Fonctionnalité de réclamation en cours de développement");
+        } catch (UnsupportedOperationException e) {
+            // Afficher message dans la console (serveur)
+            System.err.println("ERREUR: " + e.getMessage() + " - Cette fonctionnalité sera disponible prochainement.");
+
+            // Afficher message à l'utilisateur (application)
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Fonctionnalité à venir");
+            alert.setHeaderText("Module en développement");
+            alert.setContentText("Le module de réclamation sera disponible dans une prochaine version. Merci de votre patience.");
+            alert.showAndWait();
+        }
+    }
+
+    /**
+     * Navigates to the statistics screen.
+     *
+     * @param event The action event that triggered this navigation
+     */
     @FXML
     private void navigateToStatistiques(ActionEvent event) {
-        navigateToPage("statistiques.fxml", "Statistiques", event);
+        try {
+            throw new UnsupportedOperationException("Fonctionnalité de statistiques en cours de développement");
+        } catch (UnsupportedOperationException e) {
+            // Afficher message dans la console (serveur)
+            System.err.println("ERREUR: " + e.getMessage() + " - Cette fonctionnalité sera disponible prochainement.");
+            
+            // Afficher message à l'utilisateur (application)
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Fonctionnalité à venir");
+            alert.setHeaderText("Module en développement");
+            alert.setContentText("Le module de statistiques sera disponible dans une prochaine version. Merci de votre patience.");
+            alert.showAndWait();
+        }
     }
 
     @FXML
@@ -48,16 +88,6 @@ public class AccueilController {
     @FXML
     private void navigateToListTitres(ActionEvent event) {
         navigateToPage("listTitres.fxml", "Liste des Titres", event);
-    }
-
-    /**
-     * Navigates to the reclamation screen.
-     *
-     * @param event The action event that triggered this navigation
-     */
-    @FXML
-    private void navigateToReclamation(ActionEvent event) {
-        navigateToPage("reclamation.fxml", "Réclamations", event);
     }
 
     /**
